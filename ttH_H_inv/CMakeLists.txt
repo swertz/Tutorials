@@ -15,31 +15,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-cmake_minimum_required(VERSION 2.8)
-project(MoMEMta-Tutorials)
+add_executable(TTbar_ttH "TTbar_ttH.cc")
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
-    "${PROJECT_SOURCE_DIR}/cmake/")
+target_link_libraries(TTbar_ttH LINK_PUBLIC ${MOMEMTA_LIBRARIES})
+target_link_libraries(TTbar_ttH LINK_PUBLIC ${ROOT_LIBRARIES})
+target_link_libraries(TTbar_ttH LINK_PUBLIC ${ROOT_GENVECTOR_LIBRARY})
+target_link_libraries(TTbar_ttH LINK_PUBLIC ${Boost_LIBRARIES})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -pedantic -Wextra")
-
-# Find dependencices
-
-find_package(MoMEMta REQUIRED)
-
-find_package(ROOT 6.02 REQUIRED)
-find_library(ROOT_GENVECTOR_LIBRARY GenVector HINTS ${ROOT_LIBRARY_DIR})
-
-set(Boost_NO_BOOST_CMAKE ON)
-find_package(Boost 1.54 REQUIRED log)
-add_definitions(-DBOOST_LOG_DYN_LINK)
-
-include_directories(${MOMEMTA_INCLUDE_DIRS})
-include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
-include_directories(SYSTEM ${ROOT_INCLUDE_DIRS})
-
-# Retrieve all the tutorials & examples
-add_subdirectory(ttH_H_inv)
-add_subdirectory(TTbar_FullyLeptonic)
-add_subdirectory(WW_FullyLeptonic)
-
+set_target_properties(TTbar_ttH PROPERTIES OUTPUT_NAME
+      "TTbar_ttH.exe")
