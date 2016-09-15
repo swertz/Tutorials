@@ -7,32 +7,16 @@ from condorTools import condorSubmitter
 
 submitters = []
 
-#submitters.append( condorSubmitter("/home/fynu/swertz/tests_MEM/Tutorials/build/ttH_H_inv/TTbar_ttH.exe", "condor_tt_ttH", ["/home/fynu/swertz/tests_MEM/Tutorials/TTbar_FullyLeptonic/tt_20evt.root"], "t", 10) )
 submitters.append( 
         condorSubmitter(
-            "/home/fynu/swertz/tests_MEM/Tutorials/build/ttH_H_inv/TTbar_ttH.exe", 
-            "condor_ttH", 
+            "/home/fynu/swertz/tests_MEM/Tutorials/build/TTbar_FullyLeptonic_JEC/TTbar_FullyLeptonic.exe", 
+            "condor_ttJEC_parallel_wideTF_updated", 
             [
-                "/home/fynu/swertz/storage/Delphes/condorDelphes/ttH_H_inv/condor/output/output_selected_0.root",
-                "/home/fynu/swertz/storage/Delphes/condorDelphes/ttH_H_inv/condor/output/output_selected_2.root",
-                "/home/fynu/swertz/storage/Delphes/condorDelphes/ttH_H_inv/condor/output/output_selected_3.root",
+                "/home/fynu/swertz/storage/TopEffTh_2016_06/TTbar.root",
             ], 
             "t", 
-            25,
-            maxEvents = 4000,
-        )
-    )
-
-submitters.append( 
-        condorSubmitter(
-            "/home/fynu/swertz/tests_MEM/Tutorials/build/ttH_H_inv/TTbar_ttH.exe", 
-            "condor_tt", 
-            [
-                "/home/fynu/swertz/ttbar_effth_delphes/15_November/selectedEvents/TTbar_qCut50.root",
-            ], 
-            "t", 
-            25,
-            maxEvents = 4000,
+            50,
+            maxEvents = 20000,
         )
     )
 

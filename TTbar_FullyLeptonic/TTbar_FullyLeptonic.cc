@@ -21,6 +21,8 @@
 #include <momemta/Logging.h>
 #include <momemta/MoMEMta.h>
 #include <momemta/Utils.h>
+#include <momemta/Types.h>
+#include <momemta/Unused.h>
 
 #include <TTree.h>
 #include <TChain.h>

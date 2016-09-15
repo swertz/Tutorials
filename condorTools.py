@@ -157,6 +157,7 @@ mv output_{job_id}.root {outdir_path}
         commonShellFileName = os.path.join(self.inDir, "condor.sh")
         with open(commonShellFileName, "w") as sh:
             sh.write(self.commonShell.format(**dico))
+        perm = os.stat(commonShellFileName)
         os.chmod(commonShellFileName, perm.st_mode | stat.S_IEXEC)
 
         print "Created condor command for {} jobs. Caution: the jobs are not submitted yet!.".format(jobCount)
